@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 Vue.use(iView)
 
 // 设置基础URL
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'http://192.168.110.26:8080/rest/v2'
 // 设置请求超时时间
 axios.defaults.timeout = 5000
 

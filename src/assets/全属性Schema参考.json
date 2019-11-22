@@ -1,0 +1,147 @@
+{
+  "edges": {
+    "gcsTest-BasicEdgeJiaoYi": {
+      "description": "表示人与人之间的交易关系.",
+      "source": "人",
+      "destination": "人",
+      "directed": "directed",
+      "properties": {
+        "jysj": "gcsTest-BasicEdgeJiaoYi.jysj.Date",
+        "jyje": "gcsTest-BasicEdgeJiaoYi.jyje.Double"
+      },
+      "aggregate": false
+    },
+    "gcsTest-SuperEdgeJiaoYi": {
+      "description": "表示交易汇总.",
+      "source": "人",
+      "destination": "人",
+      "directed": "directed",
+      "properties": {
+        "day1": "gcsTest-SuperEdgeJiaoYi.day1.Date",
+        "day2": "gcsTest-SuperEdgeJiaoYi.day2.Date",
+        "zje": "gcsTest-SuperEdgeJiaoYi.zje.Double"
+      },
+      "groupBy": [
+        "day1",
+        "day2"
+      ]
+    }
+  },
+  "entities": {
+    "gcsTest-SuperEntityPerson": {
+      "description": "                    非聚合维度的aggregateFunction/serialiser等属性值为null时,可以省略不写",
+      "vertex": "人",
+      "properties": {
+        "jymc": "gcsTest-SuperEntityPerson.jymc.String",
+        "newPro": "gcsTest-SuperEntityPerson.newPro.String"
+      },
+      "aggregate": false
+    },
+    "gcsTest-BasicEntityPerson": {
+      "description": "人",
+      "vertex": "人",
+      "properties": {
+        "jymc": "gcsTest-BasicEntityPerson.jymc.String"
+      },
+      "aggregate": false
+    }
+  },
+  "types": {
+    "人": {
+      "description": "",
+      "class": "java.lang.String",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-BasicEntityPerson.jymc.String": {
+      "description": "",
+      "class": "java.lang.String",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": [
+        {
+          "class": "cn.thutmose.abution.jfunc.impl.predicate.Exists"
+        }
+      ]
+    },
+    "gcsTest-BasicEdgeJiaoYi.jysj.Date": {
+      "description": "",
+      "class": "java.util.Date",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-BasicEdgeJiaoYi.jyje.Double": {
+      "description": ".",
+      "class": "java.lang.Double",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-SuperEdgeJiaoYi.day1.Date": {
+      "description": "",
+      "class": "java.util.Date",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Min"
+      },
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-SuperEdgeJiaoYi.day2.Date": {
+      "description": "",
+      "class": "java.util.Date",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Max"
+      },
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-SuperEdgeJiaoYi.zje.Double": {
+      "description": "",
+      "class": "java.lang.Double",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Sum"
+      },
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-SuperEntityPerson.jymc.String": {
+      "description": ".",
+      "class": "java.lang.String",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "gcsTest-SuperEntityPerson.newPro.String": {
+      "description": ".",
+      "class": "java.lang.String",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "directed": {
+      "description": null,
+      "class": "java.lang.Boolean",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": null
+    },
+    "true": {
+      "description": "",
+      "class": "java.lang.Boolean",
+      "aggregateFunction": null,
+      "serialiser": null,
+      "validateFunctions": [
+        {
+          "class": "cn.thutmose.abution.jfunc.impl.predicate.IsTrue"
+        }
+      ]
+    }
+  },
+  "config": null,
+  "id": null,
+  "timestampProperty": null,
+  "vertexSerialiser": null,
+  "visibilityProperty": null
+}

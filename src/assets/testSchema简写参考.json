@@ -1,0 +1,113 @@
+{
+  "edges": {
+    "SuperEdgeJiaoYi-gcsTest": {
+      "description": "表示交易汇总.",  //描述
+      "source": "人",         //源
+      "destination": "人",     //目标
+      "directed": "directed",   //
+      "properties": {           //属性
+        "day1": "SuperEdgeJiaoYi-gcsTest.day1.Date",   //属性类型
+        "day2": "SuperEdgeJiaoYi-gcsTest.day2.Date",    //
+        "zje": "SuperEdgeJiaoYi-gcsTest.zje.Double"
+      },
+      "groupBy": [    //合并
+        "day1",
+        "day2"
+      ]
+    },
+    "BasicEdgeJiaoYi-gcsTest": {
+      "description": "表示人与人之间的交易关系.",
+      "source": "人",
+      "destination": "人",
+      "directed": "directed",
+      "properties": {
+        "jysj": "BasicEdgeJiaoYi-gcsTest.jysj.Date",
+        "jyje": "BasicEdgeJiaoYi-gcsTest.jyje.Double"
+      },
+      "aggregate": false
+    }
+  },
+  "entities": {
+    "BasicEntityPerson-gcsTest": {   //基础纬度
+      "description": "人",   //描述
+      "vertex": "人",   //标识
+      "properties": {   //属性
+        "jymc": "BasicEntityPerson-gcsTest.jymc.String"
+      },
+      "aggregate": false
+    },
+    "SuperEntityPerson-gcsTest": {
+      "description": "",
+      "vertex": "人",
+      "properties": {
+        "jymc": "SuperEntityPerson-gcsTest.jymc.String",
+        "newPro": "SuperEntityPerson-gcsTest.newPro.String"
+      },
+      "aggregate": false
+    }
+  },
+  "types": {
+    "人": {
+      "description": "",
+      "class": "java.lang.String"
+    },
+    "BasicEntityPerson-gcsTest.jymc.String": {
+      "description": "",
+      "class": "java.lang.String",
+      "validateFunctions": [
+        {
+          "class": "cn.thutmose.abution.jfunc.impl.predicate.Exists"
+        }
+      ]
+    },
+    "BasicEdgeJiaoYi-gcsTest.jysj.Date": {
+      "description": "",
+      "class": "java.util.Date"
+    },
+    "BasicEdgeJiaoYi-gcsTest.jyje.Double": {
+      "description": ".",
+      "class": "java.lang.Double"
+    },
+    "SuperEdgeJiaoYi-gcsTest.day1.Date": {
+      "description": "",
+      "class": "java.util.Date",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Min"
+      }
+    },
+    "SuperEdgeJiaoYi-gcsTest.day2.Date": {
+      "description": "",
+      "class": "java.util.Date",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Max"
+      }
+    },
+    "SuperEdgeJiaoYi-gcsTest.zje.Double": {
+      "description": "",
+      "class": "java.lang.Double",
+      "aggregateFunction": {
+        "class": "cn.thutmose.abution.jfunc.impl.binaryoperator.Sum"
+      }
+    },
+    "SuperEntityPerson-gcsTest.jymc.String": {
+      "description": ".",
+      "class": "java.lang.String"
+    },
+    "SuperEntityPerson-gcsTest.newPro.String": {
+      "description": ".",
+      "class": "java.lang.String"
+    },
+    "directed": {
+      "class": "java.lang.Boolean"
+    },
+    "true": {
+      "description": "",
+      "class": "java.lang.Boolean",
+      "validateFunctions": [
+        {
+          "class": "cn.thutmose.abution.jfunc.impl.predicate.IsTrue"
+        }
+      ]
+    }
+  }
+}

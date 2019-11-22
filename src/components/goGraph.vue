@@ -53,9 +53,13 @@ export default {
             )
         )
         myDiagram.linkTemplate =
-            $(window.go.Link,
-                $(go.Shape),
-                $(go.Shape,{toArrow:"standard"})
+            $(window.go.Link,{
+                click:function(e,node){
+                    self.$emit("link-click",e,node)
+                }
+            },
+            $(go.Shape),
+            $(go.Shape,{toArrow:"standard"})
                
             ),
             $(window.go.TextBlock,{
